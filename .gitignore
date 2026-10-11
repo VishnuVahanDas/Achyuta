@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Secrets and local config
+.env
+
+# Built or downloaded, never committed
+/bin/
+/static/css/app.css
+/staticfiles/
+
+# Private uploads
+/media/

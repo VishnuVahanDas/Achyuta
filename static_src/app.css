@@ -1,0 +1,14 @@
+/* Tailwind entry point. Built to static/css/app.css by `make css`. */
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: oklch(0.97 0.02 265);
+  --color-brand-100: oklch(0.93 0.04 265);
+  --color-brand-600: oklch(0.5 0.17 265);
+  --color-brand-700: oklch(0.43 0.16 265);
+}
+
+/* Alpine: hide x-cloak elements until Alpine has initialised. */
+[x-cloak] {
+  display: none !important;
+}

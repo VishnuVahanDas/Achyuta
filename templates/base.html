@@ -1,0 +1,28 @@
+{% load static %}<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>{% block title %}Achyuta{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  <script src="{% static 'vendor/htmx.min.js' %}" defer></script>
+  <script src="{% static 'vendor/alpine.min.js' %}" defer></script>
+</head>
+<body class="bg-slate-100 text-slate-900 antialiased" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+  {# Phone-width column; on wider screens it stays centred. #}
+  <div class="mx-auto flex min-h-dvh max-w-md flex-col bg-white">
+    {% block header %}
+    <header class="sticky top-0 z-10 flex h-14 items-center border-b border-slate-200 bg-white/95 px-4 backdrop-blur">
+      <h1 class="text-lg font-semibold">{% block heading %}Achyuta{% endblock %}</h1>
+    </header>
+    {% endblock %}
+
+    <main class="flex-1 px-4 pt-4 {% if user.is_authenticated %}pb-36{% else %}pb-8{% endif %}">
+      {% block content %}{% endblock %}
+    </main>
+
+    {% if user.is_authenticated %}{% include "_bottom_nav.html" %}{% endif %}
+  </div>
+</body>
+</html>

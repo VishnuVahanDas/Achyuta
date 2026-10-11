@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}More · Achyuta{% endblock %}
+{% block heading %}More{% endblock %}
+
+{% block content %}
+  <dl class="divide-y divide-slate-200 rounded-2xl border border-slate-200 text-sm">
+    <div class="flex items-center justify-between gap-4 px-4 py-3">
+      <dt class="text-slate-500">Signed in as</dt>
+      <dd class="truncate font-medium">{{ user.get_username }}</dd>
+    </div>
+    <div class="flex items-center justify-between gap-4 px-4 py-3">
+      <dt class="text-slate-500">Workspace</dt>
+      <dd class="truncate font-medium">{{ request.workspace.name }} · {{ request.workspace.currency }}</dd>
+    </div>
+  </dl>
+
+  <form method="post" action="{% url 'logout' %}" class="mt-6">
+    {% csrf_token %}
+    <button type="submit" class="h-12 w-full rounded-xl border border-slate-300 text-base font-medium text-slate-700 active:bg-slate-100">
+      Log out
+    </button>
+  </form>
+{% endblock %}
